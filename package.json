@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/lxdcn/bounce/issues"
   },
-  "homepage": "https://github.com/lxdcn/bounce"
+  "homepage": "https://github.com/lxdcn/bounce",
   "dependencies": {
     "superagent": "~0.18.0"
   }
