@@ -1,0 +1,23 @@
+{
+  "name": "bounce",
+  "version": "0.0.1",
+  "description": "Distribute a file from one host to many host exponentially",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lxdcn/bounce.git"
+  },
+  "author": "lxd <i@lxd.me>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lxdcn/bounce/issues"
+  },
+  "homepage": "https://github.com/lxdcn/bounce"
+  "dependencies": {
+    "superagent": "~0.18.0"
+  }
+
+}
