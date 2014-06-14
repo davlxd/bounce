@@ -3,6 +3,7 @@ var fs = require('fs');
 var request = require('superagent');
 var client_utils = require('./lib/client-utils.js');
 var server_utils = require('./lib/server-utils.js');
+var utils = require('./lib/utils.js');
 
 global.run_as = '';  // run as 'server' or 'client'
 global.port = 7105;
@@ -24,8 +25,17 @@ try {
 
 
 
+//status list:
+//  hungry
+//  sending
+//  receiving
+//  satisfied
 function init_set(clients) {
+  set0.push({'host':utils.get_public_ip, 'status':'satisfied'});
 
+  clients.map(function(client){
+    set1.push({'host':client, 'status':'hungry'});
+  });
 
   server_utils.provoke_transfer();
 }
