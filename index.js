@@ -44,6 +44,7 @@ function server(data, res) {
 
 
 function client(data, res) {
+  console.log('client' + data);
   var obj = JSON.parse(data);
   if (obj.cmd === 'spike')
     res.end();
