@@ -8,6 +8,9 @@ var utils = require('./lib/utils.js');
 global.run_as = '';  // run as 'server' or 'client'
 global.port = 7105;
 
+global.set0 = []; // set0 contains hosts have the complete file
+global.set1 = []; // set1 contains hosts don't have it yet
+
 
 var input_arg = process.argv[2];
 
