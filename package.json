@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/lxdcn/bounce",
   "dependencies": {
-    "superagent": "~0.18.0"
+    "superagent": "~0.18.0",
+    "async" : "~0.9.0"
   }
 
 }

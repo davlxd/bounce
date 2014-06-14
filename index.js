@@ -24,13 +24,10 @@ try {
 
 
 
-// init data structure here (2 set)
-// set0 contains hosts have the complete file
-// set1 contains hosts don't have it yet
 function init_set(clients) {
-  var set0 = [], set1 = [];
-  
-  server_utils.provoke_transfer(set0, set1);
+
+
+  server_utils.provoke_transfer();
 }
 
 
