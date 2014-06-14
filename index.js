@@ -8,10 +8,6 @@ var utils = require('./lib/utils.js');
 global.run_as = '';  // run as 'server' or 'client'
 global.port = 7105;
 
-global.set0 = []; // set0 contains hosts have the complete file
-global.set1 = []; // set1 contains hosts don't have it yet
-
-
 var input_arg = process.argv[2];
 
 try {
@@ -34,7 +30,7 @@ try {
 //  receiving
 //  satisfied
 function init_set(clients) {
-  set0.push({'host':utils.get_public_ip, 'status':'satisfied'});
+  set0.push({'host':utils.get_public_ip(), 'status':'satisfied'});
 
   clients.map(function(client){
     set1.push({'host':client, 'status':'hungry'});
