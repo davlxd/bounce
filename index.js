@@ -45,7 +45,7 @@ function server(data, res) {
 
 function client(data, res) {
   var obj = JSON.parse(data);
-  if (obj.cmd === 'spkie')
+  if (obj.cmd === 'spike')
     res.end();
   
 }
