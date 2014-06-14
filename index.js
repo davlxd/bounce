@@ -30,7 +30,7 @@ try {
 //  receiving
 //  satisfied
 function init_set(clients) {
-  set0.push({'host':utils.get_public_ip(), 'status':'satisfied'});
+  set0.push({'host':utils.get_public_ip(), 'status':'satisfied', 'file_path':input_arg});
 
   clients.map(function(client){
     set1.push({'host':client, 'status':'hungry'});
@@ -56,7 +56,7 @@ function client(data, res) {
   console.log('client' + data);
   var obj = JSON.parse(data);
   if (obj.cmd === 'spike')
-    res.end();
+    res.end(input_arg); //response receive path to server
   
 }
 
