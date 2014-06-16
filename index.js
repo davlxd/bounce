@@ -61,19 +61,33 @@ if (run_as === 'server') {
 
 
 function server(data, req, res) {
-  console.log('server' + data);
+  server_addr = utils.get_public_ip();
+
+  var cmd_obj = JSON.parse(data);
+  console.log('Receive command -' + cmd_obj + '-');
+
+  if (cmd_obj === 'transfer') {
+    utils.transfer(cmd_obj);
+    return ;
+  }
 }
 
 
 function client(data, req, res) {
   server_addr = req.connection.remoteAddress;
 
-  console.log('client' + data);
-  console.log('server_addr is ' + server_addr);
-  var obj = JSON.parse(data);
-  if (obj.cmd === 'spike')
-    res.end(input_arg); //response receive path to server
+  var cmd_obj = JSON.parse(data);
+  console.log('Receive command -' + cmd_obj + '-');
   
+  if (cmd_obj.cmd === 'spike') {
+    res.end(input_arg); //response receive path to server
+    return ;
+  }
+
+  if (cmd_obj.cmd === 'transfer') {
+    utils.transfer(cmd_obj);
+    return ;
+  }
 }
 
 
