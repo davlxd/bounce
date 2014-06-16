@@ -16,4 +16,5 @@ Prerequisite
 * Underlying file transfer implementation is node exec call `rsync`, so you must have rsync installed on every host
 * File transfer could happen between any two hosts, so a collection of all hosts' pubkey must be stored in every host's .ssh/authorized_keys
 * Configure iptables on every host to allow this happen
+* Figure out a way to start this process on every client host
 * After all, you can tweak my code

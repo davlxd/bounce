@@ -59,7 +59,7 @@ if (run_as === 'server') {
 function server(data, req, res) {
   server_addr = utils.get_public_ip();
 
-  console.log('Receive command `' + data + '`');
+  //console.log('Receive command `' + data + '`');
   var cmd_obj = JSON.parse(data);
 
 
