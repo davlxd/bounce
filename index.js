@@ -71,7 +71,7 @@ function server(data, req, res) {
 
   if (cmd_obj.cmd === 'transfer_succeeded') {
     console.log(cmd_obj.data);
-    utils.change_transferred_host_status(cmd_obj);
+    server_utils.change_transferred_host_status(cmd_obj);
     server_utils.match_hosts();
     res.end();
     return ;
@@ -80,7 +80,7 @@ function server(data, req, res) {
   if (cmd_obj.cmd === 'transfer_failed') {
     console.log(cmd_obj.data);
     console.log('Previous transfer failed, reset host status and rematch!');
-    utils.change_transfer_failed_host_status(cmd_obj);
+    server_utils.change_transfer_failed_host_status(cmd_obj);
     server_utils.match_hosts();
     res.end();
     return ;
