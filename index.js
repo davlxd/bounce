@@ -39,6 +39,11 @@ function init_set(clients, clients_receive_path) {
     set1.push({'host':client_and_path[0], 'status':'hungry', 'file_path':joined_path});  
   });
 
+  console.log('Initial hosts:');
+  console.log('==================================');
+  console.log(set0);
+  console.log(set1);
+  console.log('==================================');
 
 // TODO: zip & map 2 arrays clients, clients_receive_path to form file_path
 // then using command provke transfer
