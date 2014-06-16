@@ -82,7 +82,7 @@ function client(data, req, res) {
   var cmd_obj = JSON.parse(data);
   
   if (cmd_obj.cmd === 'spike') {
-    res.end(input_arg); //response receive path to server
+    res.end(path.resolve(input_arg)); //response receive path to server
     return ;
   }
 
