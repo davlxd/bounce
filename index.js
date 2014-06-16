@@ -5,6 +5,7 @@ var client_utils = require('./lib/client-utils.js');
 var server_utils = require('./lib/server-utils.js');
 var utils = require('./lib/utils.js');
 var path = require('path');
+var _ = require('underscore');
 
 global.run_as = '';  // run as 'server' or 'client'
 global.port = 7105;
@@ -30,16 +31,18 @@ try {
 //  sending
 //  receiving
 //  satisfied
-function init_set(clients, clients_receive_path)) {
+function init_set(clients, clients_receive_path) {
   set0.push({'host':utils.get_public_ip(), 'status':'satisfied', 'file_path':input_arg});
+
+  _.zip(clients, clients_receive_path).map(function(client_and_path){
+    var joined_path = path.join(client_and_path[1], input_arg);
+    set1.push({'host':client_and_path[0], 'status':'hungry', 'file_path':joined_path});  
+  });
 
 
 // TODO: zip & map 2 arrays clients, clients_receive_path to form file_path
 // then using command provke transfer
 // local transfer implementation ...
-  clients.map(function(client){
-    set1.push({'host':client, 'status':'hungry'});
-  });
 
   server_utils.provoke_transfer();
 }
