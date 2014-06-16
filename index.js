@@ -63,12 +63,13 @@ if (run_as === 'server') {
 function server(data, req, res) {
   server_addr = utils.get_public_ip();
 
-  console.log('Receive command -' + data + '-');
+  console.log('Receive command `' + data + '`');
   var cmd_obj = JSON.parse(data);
 
 
   if (cmd_obj === 'transfer') {
     utils.transfer(cmd_obj);
+    res.end();
     return ;
   }
 }
@@ -77,7 +78,7 @@ function server(data, req, res) {
 function client(data, req, res) {
   server_addr = req.connection.remoteAddress;
 
-  console.log('Receive command -' + data + '-');
+  console.log('Receive command `' + data + '`');
   var cmd_obj = JSON.parse(data);
   
   if (cmd_obj.cmd === 'spike') {
@@ -87,13 +88,13 @@ function client(data, req, res) {
 
   if (cmd_obj.cmd === 'transfer') {
     utils.transfer(cmd_obj);
+    res.end();
     return ;
   }
 }
 
 
 http.createServer(function (req, res) {
-  console.log(req.connection.remoteAddress);
   var body = "";
   req.on('data', function (chunk) {
     body += chunk;
