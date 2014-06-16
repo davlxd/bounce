@@ -67,7 +67,7 @@ function server(data, req, res) {
   var cmd_obj = JSON.parse(data);
 
 
-  if (cmd_obj === 'transfer') {
+  if (cmd_obj.cmd === 'transfer') {
     utils.transfer(cmd_obj);
     res.end();
     return ;
