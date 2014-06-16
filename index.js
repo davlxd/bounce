@@ -60,13 +60,16 @@ if (run_as === 'server') {
 
 
 
-function server(data, res) {
+function server(data, req, res) {
   console.log('server' + data);
 }
 
 
-function client(data, res) {
+function client(data, req, res) {
+  server_addr = req.connection.remoteAddress;
+
   console.log('client' + data);
+  console.log('server_addr is ' + server_addr);
   var obj = JSON.parse(data);
   if (obj.cmd === 'spike')
     res.end(input_arg); //response receive path to server
@@ -75,12 +78,13 @@ function client(data, res) {
 
 
 http.createServer(function (req, res) {
+  console.log(req.connection.remoteAddress);
   var body = "";
   req.on('data', function (chunk) {
     body += chunk;
   });
   req.on('end', function () {
-    run_as === 'server' ? server(body, res) : client(body, res);
+    run_as === 'server' ? server(body, req, res) : client(body, req, res);
   });
 }).listen(7105);
 
