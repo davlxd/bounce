@@ -44,7 +44,7 @@ function init_set(clients, clients_receive_path) {
 // then using command provke transfer
 // local transfer implementation ...
 
-  server_utils.provoke_transfer();
+  server_utils.match_hosts();
 }
 
 
