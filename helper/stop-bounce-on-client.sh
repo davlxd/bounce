@@ -4,7 +4,7 @@
 
 function do_dist() {
     #ssh-copy-id twer@$1
-  PID=`ssh $1 ps aux | grep node | grep index.js | grep -v bash | awk '{print $2}'`
+  PID=`ssh -n $1 ps aux | grep node | grep index.js | grep -v bash | awk '{print $2}'`
   ssh -n $1 "kill $PID"
 }
 
