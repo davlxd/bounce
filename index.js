@@ -31,10 +31,10 @@ try {
 //  sending
 //  receiving
 //  satisfied
-function init_set(clients, clients_receive_path) {
+function init_set(clients_with_path) {
   set0.push({'host':utils.get_public_ip(), 'status':'satisfied', 'file_path':path.resolve(input_arg)});
 
-  _.zip(clients, clients_receive_path).map(function(client_and_path){
+  clients_with_path.map(function(client_and_path){
     var joined_path = path.join(client_and_path[1], path.basename(input_arg));
     set1.push({'host':client_and_path[0], 'status':'hungry', 'file_path':joined_path});  
   });
