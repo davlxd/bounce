@@ -5,7 +5,6 @@ var client_utils = require('./lib/client-utils.js');
 var server_utils = require('./lib/server-utils.js');
 var utils = require('./lib/utils.js');
 var path = require('path');
-var _ = require('underscore');
 
 global.run_as = '';  // run as 'server' or 'client'
 global.port = 7105;
