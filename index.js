@@ -69,7 +69,6 @@ function server(data, req, res) {
   }
 
   if (cmd_obj.cmd === 'transfer_succeeded') {
-    console.log(cmd_obj.data);
     server_utils.change_transferred_host_status(cmd_obj);
     server_utils.match_hosts();
     res.end();
@@ -77,7 +76,6 @@ function server(data, req, res) {
   }
 
   if (cmd_obj.cmd === 'transfer_failed') {
-    console.log(cmd_obj.data);
     console.log('Previous transfer failed, reset host status and rematch!');
     server_utils.change_transfer_failed_host_status(cmd_obj);
     server_utils.match_hosts();
@@ -127,7 +125,7 @@ console.log('Bounce now running as ' + run_as + ' at port ' + cmd_port);
 
 if (run_as === 'client') {
   http.createServer(function (req, res) {
-    console.log('Client receive file @ ' + receive_file_path);
+    console.log('Client will receive file store to ' + receive_file_path);
     var writeStream = fs.createWriteStream(receive_file_path);
     req.pipe(writeStream);
 
