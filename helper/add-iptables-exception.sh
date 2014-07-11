@@ -4,8 +4,8 @@
 
 function do_dist() {
     #ssh-copy-id twer@$1
-    ssh -n $1 "sudo iptables -I INPUT 1 -p tcp --dport 7105 -j ACCEPT"
-    ssh -n $1 "sudo iptables -I INPUT 1 -p tcp --dport 5017 -j ACCEPT"
+    ssh -n root@$1 "iptables -I INPUT 1 -p tcp --dport 7105 -j ACCEPT"
+    ssh -n root@$1 "iptables -I INPUT 1 -p tcp --dport 5017 -j ACCEPT"
 }
 
 
