@@ -9,6 +9,7 @@ var path = require('path');
 global.run_as = '';  // run as 'server' or 'client'
 global.cmd_port = 7105; // port for comand exchange
 global.file_port = 5017; // port for file transfer
+globaa.receive_file_path = '';
 
 var input_arg = process.argv[2];
 
@@ -62,7 +63,6 @@ function server(data, req, res) {
   //console.log('Receive command `' + data + '`');
   var cmd_obj = JSON.parse(data);
 
-
   if (cmd_obj.cmd === 'transfer') {
     utils.transfer(cmd_obj);
     res.end();
@@ -104,6 +104,11 @@ function client(data, req, res) {
     res.end();
     return ;
   }
+  if (cmd_obj.cmd === 'receive') {
+    receive_file_path = cmd_obj.to_path;
+    res.end();
+    return ;
+  }
 }
 
 
@@ -119,5 +124,20 @@ http.createServer(function (req, res) {
 
 console.log('Bounce now running as ' + run_as + ' at port ' + cmd_port);
 
+
+
+if (run_as === 'client') {
+  http.createServer(function (req, res) {
+    console.log('Client receive file @ ' + receive_file_path);
+    var writeStream = fs.createWriteStream(receive_file_path);
+    writeStream.pipe(req);
+    // req.on('end', function() {
+    //   writeStream.end();
+    //   res.end();
+    // });
+  }).listen(file_port);
+
+  console.log('Client now listen to receive file  at port ' + cmd_port);
+}
 
 
