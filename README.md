@@ -13,11 +13,8 @@ means:
 Prerequisite
 ------------
 * Install Node and NPM on every host
-* Underlying file transfer implementation is node exec call `rsync`, so you must have rsync installed on every host
-* File transfer could happen between any two hosts, so a collection of all hosts' pubkey must be stored in every host's `.ssh/authorized_keys`
-  * And `.ssh/known_hosts` to avoid human intervention
-* Configure iptables on every host to allow this happen
-* Figure out a way to start this process on every client host
+* Configure iptables on every host to allow this happen (refers to `helper/add-iptables-exception.sh`)
+* Figure out a way to start this process on every client host (refers to `helper/start-bounce-on-client.sh`)
 
 
 
