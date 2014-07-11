@@ -129,6 +129,10 @@ if (run_as === 'client') {
     var writeStream = fs.createWriteStream(receive_file_path);
     req.pipe(writeStream);
 
+    writeStream.on('end', function(){
+      console.log('Received');
+    });
+
     // req.on('end', function() {
     //   writeStream.end();
     //   res.end();
