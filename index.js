@@ -127,17 +127,15 @@ console.log('Bounce now running as ' + run_as + ' at port ' + cmd_port);
 
 if (run_as === 'client') {
   http.createServer(function (req, res) {
-    req
-      .on('data', function() {
-	console.log('Client receive file @ ' + receive_file_path);
-	var writeStream = fs.createWriteStream(receive_file_path);
-	writeStream.pipe(req);
-      })
-      .on('end', function() {
-	writeStream.end();
-	res.end();
-      });
+    console.log('Client receive file @ ' + receive_file_path);
+    var writeStream = fs.createWriteStream(receive_file_path);
+    // writeStream.pipe(req);
+    req.pipe(writeStream);
 
+    // req.on('end', function() {
+    //   writeStream.end();
+    //   res.end();
+    // });
   }).listen(file_port);
 
   console.log('Client now listen to receive file at port ' + file_port);
