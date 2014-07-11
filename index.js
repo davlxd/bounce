@@ -129,7 +129,6 @@ if (run_as === 'client') {
   http.createServer(function (req, res) {
     console.log('Client receive file @ ' + receive_file_path);
     var writeStream = fs.createWriteStream(receive_file_path);
-    // writeStream.pipe(req);
     req.pipe(writeStream);
 
     // req.on('end', function() {
