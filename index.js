@@ -131,12 +131,8 @@ if (run_as === 'client') {
 
     writeStream.on('close', function(){
       console.log('Received');
+      res.end();
     });
-
-    // req.on('end', function() {
-    //   writeStream.end();
-    //   res.end();
-    // });
   }).listen(file_port);
 
   console.log('Client now listen to receive file at port ' + file_port);
