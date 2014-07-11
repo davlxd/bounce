@@ -137,7 +137,7 @@ if (run_as === 'client') {
     // });
   }).listen(file_port);
 
-  console.log('Client now listen to receive file  at port ' + cmd_port);
+  console.log('Client now listen to receive file at port ' + file_port);
 }
 
 
