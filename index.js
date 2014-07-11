@@ -7,7 +7,8 @@ var utils = require('./lib/utils.js');
 var path = require('path');
 
 global.run_as = '';  // run as 'server' or 'client'
-global.port = 7105;
+global.cmd_port = 7105; // port for comand exchange
+global.file_port = 5017; // port for file transfer
 
 var input_arg = process.argv[2];
 
@@ -114,9 +115,9 @@ http.createServer(function (req, res) {
   req.on('end', function () {
     run_as === 'server' ? server(body, req, res) : client(body, req, res);
   });
-}).listen(7105);
+}).listen(cmd_port);
 
-console.log('Bounce now running as ' + run_as + ' at port ' + port);
+console.log('Bounce now running as ' + run_as + ' at port ' + cmd_port);
 
 
 
