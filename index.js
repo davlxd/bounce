@@ -9,7 +9,7 @@ var path = require('path');
 global.run_as = '';  // run as 'server' or 'client'
 global.cmd_port = 7105; // port for comand exchange
 global.file_port = 5017; // port for file transfer
-globaa.receive_file_path = '';
+global.receive_file_path = '';
 
 var input_arg = process.argv[2];
 
