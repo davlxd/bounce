@@ -25,12 +25,6 @@ try {
 }
 
 
-
-//status list:
-//  hungry
-//  sending
-//  receiving
-//  satisfied
 function init_set(clients_with_path) {
   set0.push({'host':utils.get_public_ip(), 'status':'satisfied', 'file_path':path.resolve(input_arg)});
 
@@ -70,15 +64,15 @@ function server(data, req, res) {
   }
 
   if (cmd_obj.cmd === 'transfer_succeeded') {
-    server_utils.change_transferred_host_status(cmd_obj);
+    server_utils.reorganize_hosts_when_transfer_succeeded(cmd_obj);
     server_utils.match_hosts();
     res.end();
     return ;
   }
 
   if (cmd_obj.cmd === 'transfer_failed') {
-    console.log('Previous transfer failed, reset host status and rematch!');
-    server_utils.change_transfer_failed_host_status(cmd_obj);
+    console.log('Previous transfer failed, reset hosts and rematch!');
+    server_utils.reorganize_hosts_when_transfer_failed(cmd_obj);
     server_utils.match_hosts();
     res.end();
     return ;
