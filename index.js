@@ -43,6 +43,7 @@ function init_set(clients_with_path) {
   console.log('==================================');
   console.log(set0);
   console.log(set1);
+  console.log(set2);
   console.log('==================================');
 
   server_utils.match_hosts();
